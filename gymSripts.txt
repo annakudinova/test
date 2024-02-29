@@ -1,0 +1,260 @@
+SELECT * FROM gym.clients;
+SELECT * FROM gym.memberships;
+SELECT * FROM gym.trainers;
+SELECT * FROM gym.categories;
+SELECT * FROM gym.clients_memberships;
+SELECT * FROM gym.clients_trainers;
+SELECT * FROM gym.payments;
+SELECT * FROM gym.visits;
+
+INSERT INTO gym.memberships (title, description, number, cost, duration) 
+VALUES ('Standard', 'Fitness room, trainer on duty', 4, 416, 30),
+('Standard', 'Fitness room, trainer on duty', 6, 624, 30),
+('Standard', 'Fitness room, trainer on duty', 8, 832, 30),
+('Student', 'Fitness room, locker room, trainer on duty, cross-fit area', 4, 320, 30),
+('Student', 'Fitness room, locker room, trainer on duty, cross-fit area', 6, 480, 30),
+('Student', 'Fitness room, locker room, trainer on duty, cross-fit area', 8, 640, 30),
+('One-time visit', 'Fitness room, locker room, trainer on duty', 1, 150, 30),
+('Unlimited', 'Unlimited number of trainings any time', 365, 6000, 365),
+('Kids', 'Any time on a schedule, trainings only for kids', 8, 656, 30),
+('Personal training_1', 'Individual classes with trainer of the first category', 4, 1000, 30),
+('Group training_1', 'Group classes with trainer of the first category', 4, 880, 30),
+('Personal training_2', 'Individual classes with trainer of the second category', 4, 1200, 30),
+('Group training_2', 'Group classes with trainer of the second category', 4, 1000, 30),
+('Personal training_3', 'Individual classes with trainer of the third category', 4, 1400, 30),
+('Group training_3', 'Group classes with trainer of the third category', 4, 1200, 30);
+
+INSERT INTO gym.clients (name, surname, date_of_birth, phone, email, photo) VALUES ('Inna', 'Uvarova', '1988-04-08', '+380984567449', 'innauvarova23@gmail.com', null),
+('Ehor', 'Zadorozhnyy', '1990-03-07', '+380998567567', 'ehorzadorozhnyy@gmail.com', null),
+('Viktoria', 'Nazarova', '1993-08-04', '+380988567854', 'viktorianazarovaa@gmail.com', null);
+INSERT INTO gym.clients (name, surname, date_of_birth, phone, email, photo) VALUES ('Oleksandr', 'Lytvynenko', '2011-01-08', '+380971234567', 'oleksandr.litvinenko@gmail.com', null),
+('Yulia', 'Gryschuk', '2010-08-05', '+380973456789', 'yulia.grishchuk@gmail.com', null),
+('Volodymyr', 'Shevchuk', '2003-06-07', '+380974567890', 'volodymyr.shevchuk@gmail.com', null),
+('Anna', 'Kovalyova', '1974-09-04', '+380975678901', 'anna.kovalova@gmail.com', null),
+('Mykola', 'Lysenko', '1997-03-06', '+380976789012', 'mykola.lisenko@gmail.com', null),
+('Maryna', 'Sydorenko', '1999-03-07', '+380977890123', 'marina.sidorenko@gmail.com', null),
+('Oksana', 'Danylenko', '1990-04-04', '+380978901234', 'oksana.danilenko@gmail.com', null),
+('Viktor', 'Petrenko', '2006-01-07', '+380979012345', 'viktor.petrenko@gmail.com', null),
+('Ihor', 'Zhukov', '2003-02-02', '+380981234567', 'igor.zhukov@gmail.com', null);
+
+INSERT INTO gym.clients (name, surname, date_of_birth, phone, email, photo) VALUES ('Katerina', 'Melnik', '1981-01-05', '+380986567884', 'katerinamelnyk@gmail.com', null);
+
+INSERT INTO gym.categories (title) VALUES ('First category'),
+('Second category'),
+('Third category');
+
+INSERT INTO gym.trainers (name, surname, date_of_birth, description, category, direction, cost, phone) 
+VALUES ('Olena', 'Ivanenko', '1988-07-01', 'Master of Sports in Athletics.', 1, 'cross-fit', 250, '+380982345678'),
+('Serhiy', 'Melnyk', '1990-05-05', 'Master of sports in powerlifting', 2, 'power training', 300, '+380983456789'),
+('Olga', 'Kravets', '1979-04-01', 'Rehabilitologist. Trainer with over 15 years of experience', 3, 'cross-fit; gym training', 350, +380985678901),
+('Yuriy', 'Dmytrenko', '2001-02-03', 'Master of sports in weightlifting', 1, 'gym training; duty trainer', 250,'+380984567890'),
+('Angelina', 'Klimova', '1999-07-05', 'Master of sports in gymnastics', 3, '90-60-90', 350,'+380976532555'),
+('Veronika', 'Uvarova', '1993-01-04', 'Master of sports in rhythmic gymnastics', 1, 'TRX', 250, '+380976532566'),
+('Kateryna', 'Rudova', '1991-09-04', 'Master of sports in ballroom dancing', 1, 'Exercises for kids; cross-fit; TRX', 250, '+380976532577');
+
+INSERT INTO gym.clients_memberships (client_id, membership_id) VALUES (1, 4),
+(2, 16),
+(3, 13),
+(4, 12),
+(5, 12 ),
+(6, 8),
+(7, 11),
+(8, 16),
+(9, 10),
+(10, 17),
+(11, 15),
+(12, 9);
+
+INSERT INTO gym.clients_trainers (client_id, trainer_id) 
+VALUES (2, 16),
+(3, 15),
+(4, 21),
+(5, 21),
+(8, 16),
+(10, 17),
+(11, 16);
+
+INSERT INTO gym.payments (client_id, membership_id, date, sum) VALUES (1, 4, '2024-02-01', 416),
+(2, 16, '2024-02-02', 1000),
+(3, 13, '2024-02-03', 1000),
+(4, 12, '2024-02-04', 656),
+(5, 12, '2024-02-05', 656),
+(6, 8, '2024-02-01', 480),
+(7, 11, '2024-02-02', 6000),
+(8, 16, '2024-02-03', 1000),
+(9, 10, '2024-02-04', 150),
+(10, 17, '2024-02-05', 1400),
+(11, 15, '2024-02-01', 1200),
+(12, 9, '2024-02-02', 640);
+
+
+INSERT INTO gym.visits (client_id, date, locker_number) VALUES (2, '2024-02-02', 12),
+(1, '2024-02-01', 15);
+INSERT INTO gym.visits (client_id, date, locker_number) VALUES (1, '2024-02-07', 13);
+
+INSERT INTO gym.clients (name, surname, date_of_birth, phone, email, photo) VALUES ('Inna', 'Uvarova', '1986-02-06', '+380987777667', 'innauvarova456@gmail.com', null);
+
+
+/*поиск клиента по имени и фамилии*/  
+SELECT c.id, c.name, c.surname, c.date_of_birth, c.phone, c.email, c.photo
+FROM gym.clients as c 
+WHERE name = 'Inna' AND surname = 'Uvarova';
+
+
+
+/*поиск тренера по имени и фамилии*/
+SELECT t.id, t.name, t.surname, t.date_of_birth, t.description, t.category, t.direction, t.cost, t.phone
+FROM gym.trainers as t 
+WHERE name = 'Olena' AND surname = 'Ivanenko';
+
+/*поиск тренера по категории*/
+SELECT t.id, t.name, t.surname, t.date_of_birth, t.description, t.category, t.direction, t.cost, t.phone
+FROM gym.trainers as t 
+WHERE category = 1;
+
+/*поиск тренера по направлению*/
+SELECT t.id, t.name, t.surname, t.date_of_birth, t.description, t.category, t.direction, t.cost, t.phone
+FROM gym.trainers as t 
+WHERE direction = 'TRX';
+/*----------------------------------------------------------------------------------------------------------------------------------------*/
+
+/* ВЫВОД БАЛАНСА АБОНЕМЕНТА И КОЛИЧЕСТВА ОСТАВШИХСЯ ЗАНЯТИЙ*/
+
+/*СТОИМОСТЬ ОДНОГО ЗАНЯТИЯ*/
+SELECT ROUND(gym.clients_memberships.cost / gym.memberships.number, 0) as cost_per_one_class
+FROM gym.memberships INNER JOIN gym.clients_memberships ON gym.memberships.id = gym.clients_memberships.membership_id INNER JOIN gym.clients ON gym.clients.id = gym.clients_memberships.client_id 
+WHERE gym.clients.id = 1;
+
+/*ОБЩАЯ СУММА ОПЛАТ */
+/*выводятся только те оплаты где разница между текущей датой и датой оплаты не привышает срок длительности абонемента*/
+SELECT SUM(gym.payments.sum) AS total_sum
+FROM gym.payments
+INNER JOIN gym.clients ON gym.payments.client_id = gym.clients.id
+INNER JOIN gym.memberships ON gym.payments.membership_id = gym.memberships.id
+WHERE gym.clients.id = 1
+AND DATEDIFF(CURRENT_DATE(), gym.payments.date) <= gym.memberships.duration;
+
+/*ОБЩЕЕ КОЛИЧЕСТВО ЗАНЯТИЙ, КОТОРОЕ МООЖЕТ ПОСЕТИТЬ КЛИЕНТ, РАССЧИТАННОЕ ИСХОДЯ ИЗ ОБЩЕЙ СУММЫ ОАЛАТЫ*/
+/*деление total_sum на cost_per_one_class*/
+SELECT ROUND(((SELECT SUM(gym.payments.sum) AS total_sum
+FROM gym.payments
+INNER JOIN gym.clients ON gym.payments.client_id = gym.clients.id
+INNER JOIN gym.memberships ON gym.payments.membership_id = gym.memberships.id
+WHERE gym.clients.id =1
+AND DATEDIFF(CURRENT_DATE(), gym.payments.date) <= gym.memberships.duration ) / (SELECT ROUND(gym.clients_memberships.cost / gym.memberships.number, 0) as cost_per_one_class
+FROM gym.memberships INNER JOIN gym.clients_memberships ON gym.memberships.id = gym.clients_memberships.membership_id INNER JOIN gym.clients ON gym.clients.id = gym.clients_memberships.client_id 
+WHERE gym.clients.id = 1)) , 0)as overal_classes_number;
+
+/*КОЛИЧЕСТВО ЗАНЯТИЙ, КОТОРОЕ ПОСЕТИЛ КЛИЕНТ В СРОК ДЕЙСТВИЯ АБОНЕМЕНТА*/
+/*с момента последней оплаты до окончания срока действия абонемента.*/
+SELECT COUNT(gym.visits.id) as visits_number
+FROM  gym.visits INNER JOIN gym.clients ON gym.visits.client_id = gym.clients.id
+WHERE gym.clients.id = 1  AND gym.visits.date >= (SELECT MAX(gym.payments.date) FROM gym.payments 
+INNER JOIN gym.clients ON gym.payments.client_id = gym.clients.id WHERE gym.clients.id = 1)
+AND gym.visits.date <= (SELECT DATE_ADD(MAX(gym.payments.date), INTERVAL gym.memberships.duration DAY)
+FROM gym.payments  INNER JOIN gym.clients ON gym.payments.client_id = gym.clients.id
+INNER JOIN gym.memberships ON gym.payments.membership_id = gym.memberships.id WHERE gym.clients.id = 1);
+
+/*БАЛАНС АБОНЕМЕНТА С УЧЕТОМ ВИЗИТОВ КЛИЕНТА В СПОРТЗАЛ В СРОК ДЕЙСТВИЯ АБОНЕМЕНТА*/
+SELECT  ((SELECT SUM(gym.payments.sum) AS total_sum
+FROM gym.payments
+INNER JOIN gym.clients ON gym.payments.client_id = gym.clients.id
+INNER JOIN gym.memberships ON gym.payments.membership_id = gym.memberships.id
+WHERE gym.clients.id = 1
+AND DATEDIFF(CURRENT_DATE(), gym.payments.date) <= gym.memberships.duration) - (SELECT COUNT(gym.visits.id) as visits_number
+FROM  gym.visits INNER JOIN gym.clients ON gym.visits.client_id = gym.clients.id
+WHERE gym.clients.id = 1  AND gym.visits.date >= (SELECT MAX(gym.payments.date) FROM gym.payments 
+INNER JOIN gym.clients ON gym.payments.client_id = gym.clients.id WHERE gym.clients.id = 1)
+AND gym.visits.date <= (SELECT DATE_ADD(MAX(gym.payments.date), INTERVAL gym.memberships.duration DAY)
+FROM gym.payments  INNER JOIN gym.clients ON gym.payments.client_id = gym.clients.id
+INNER JOIN gym.memberships ON gym.payments.membership_id = gym.memberships.id WHERE gym.clients.id = 1))  *  (SELECT ROUND(gym.clients_memberships.cost / gym.memberships.number, 0) as cost_per_one_class FROM gym.memberships 
+INNER JOIN gym.clients_memberships ON gym.memberships.id = gym.clients_memberships.membership_id INNER JOIN gym.clients ON gym.clients.id = gym.clients_memberships.client_id 
+ WHERE gym.clients.id = 1)) as balance;
+ 
+/*КОЛИЧЕСТВО ОСТАВШИХСЯ ЗАНЯТИЙ ИСХОДЯ ИЗ БАЛАНСА АБОНЕМЕНТА*/
+SELECT ROUND(((SELECT SUM(gym.payments.sum) AS total_sum
+FROM gym.payments
+INNER JOIN gym.clients ON gym.payments.client_id = gym.clients.id
+INNER JOIN gym.memberships ON gym.payments.membership_id = gym.memberships.id
+WHERE gym.clients.id = 1
+AND DATEDIFF(CURRENT_DATE(), gym.payments.date) <= gym.memberships.duration) - 
+(SELECT COUNT(gym.visits.id) as visits_number
+FROM  gym.visits INNER JOIN gym.clients ON gym.visits.client_id = gym.clients.id
+WHERE gym.clients.id = 1 AND gym.visits.date >= (SELECT MAX(gym.payments.date) FROM gym.payments 
+INNER JOIN gym.clients ON gym.payments.client_id = gym.clients.id WHERE gym.clients.id =1)
+AND gym.visits.date <= (SELECT DATE_ADD(MAX(gym.payments.date), INTERVAL gym.memberships.duration  DAY)
+FROM gym.payments  INNER JOIN gym.clients ON gym.payments.client_id = gym.clients.id
+INNER JOIN gym.memberships ON gym.payments.membership_id = gym.memberships.id WHERE gym.clients.id = 1))  *  
+(SELECT ROUND(gym.clients_memberships.cost / gym.memberships.number, 0) as cost_per_one_class FROM gym.memberships 
+INNER JOIN gym.clients_memberships ON gym.memberships.id = gym.clients_memberships.membership_id INNER JOIN gym.clients ON gym.clients.id = gym.clients_memberships.client_id 
+WHERE gym.clients.id = 1)) / (SELECT ROUND(gym.clients_memberships.cost / gym.memberships.number, 0) as cost_per_one_class FROM gym.memberships 
+INNER JOIN gym.clients_memberships ON gym.memberships.id = gym.clients_memberships.membership_id INNER JOIN gym.clients ON gym.clients.id = gym.clients_memberships.client_id 
+WHERE gym.clients.id = 1), 0) as remaining_classes;
+
+/*----------------------------------------------------------------------------------------------------------------------------------------*/
+/*ВЫВЕСТИ ДАТУ ОКОНЧАНИЯ АБОНЕМЕНТА */
+SELECT DATE_ADD(MAX(gym.payments.date), INTERVAL gym.memberships.duration DAY) AS expiration_date
+FROM gym.payments
+INNER JOIN gym.clients ON gym.payments.client_id = gym.clients.id
+INNER JOIN gym.memberships ON gym.payments.membership_id = gym.memberships.id
+WHERE gym.clients.id =7;
+
+/*----------------------------------------------------------------------------------------------------------------------------------------*/
+/*ВЫВЕСТИ КЛИЕНТА С НАИБОЛЬШИМ КОЛИЧЕСТВОМ ВИЗИТОВ ЗА МЕСЯЦ*/
+SELECT gym.clients.id, COUNT(gym.visits.client_id) AS visits_count
+FROM gym.visits INNER JOIN gym.clients ON gym.clients.id = gym.visits.client_id
+WHERE MONTH(gym.visits.date) = MONTH(CURRENT_DATE()) AND YEAR(gym.visits.date) = YEAR(CURRENT_DATE())
+GROUP BY gym.visits.client_id
+HAVING COUNT(gym.visits.client_id) = (SELECT COUNT(gym.visits.client_id) AS visits_count
+FROM gym.visits WHERE MONTH(gym.visits.date) = MONTH(CURRENT_DATE()) AND YEAR(gym.visits.date) = YEAR(CURRENT_DATE())
+GROUP BY gym.visits.client_id
+ORDER BY visits_count DESC
+LIMIT 1);
+
+
+SELECT gym.clients.id
+FROM gym.visits
+INNER JOIN gym.clients ON gym.clients.id = gym.visits.client_id
+WHERE MONTH(gym.visits.date) = MONTH(CURRENT_DATE()) AND YEAR(gym.visits.date) = YEAR(CURRENT_DATE())
+GROUP BY gym.visits.client_id
+HAVING COUNT(gym.visits.client_id) = (SELECT COUNT(gym.visits.client_id) AS visits_count
+FROM gym.visits WHERE MONTH(gym.visits.date) = MONTH(CURRENT_DATE()) AND YEAR(gym.visits.date) = YEAR(CURRENT_DATE())
+GROUP BY gym.visits.client_id ORDER BY visits_count DESC 
+LIMIT 1);
+
+/*----------------------------------------------------------------------------------------------------------------------------------------*/
+ 
+
+/*создание вью для получения баланса клиента*/
+CREATE VIEW client_balance_view AS
+SELECT  clients.id AS client_id, ((SELECT SUM(p.sum) AS total_sum FROM gym.payments p
+INNER JOIN gym.memberships m ON p.membership_id = m.id WHERE p.client_id = clients.id
+AND DATEDIFF(CURRENT_DATE(), p.date) <= m.duration) - (SELECT COUNT(v.id) AS visits_number
+FROM gym.visits v WHERE v.client_id = clients.id
+AND v.date >= (SELECT MAX(p.date) FROM gym.payments p
+WHERE p.client_id = clients.id) AND v.date <= (SELECT DATE_ADD(MAX(p.date), INTERVAL m.duration DAY)
+FROM gym.payments p INNER JOIN gym.memberships m ON p.membership_id = m.id
+WHERE p.client_id = clients.id)) * (SELECT ROUND(cm.cost / m.number, 0) AS cost_per_one_class FROM gym.memberships m INNER JOIN gym.clients_memberships cm ON m.id = cm.membership_id 
+ WHERE cm.client_id = clients.id)) AS balance
+FROM gym.clients;
+/*ВЫВЕСТИ БАЛАНС КЛИЕНТА ИСПОЛЬЗУЯ VIEW*/
+SELECT balance FROM client_balance_view WHERE client_id = 1;
+/**/
+/*DROP VIEW client_balance_view;*/
+
+
+/*БОНУС*/
+/*ВЫВЕСТИ КЛИЕНТА С НАИБОЛЬШИМ КОЛИЧЕСТВОМ ВИЗИТОВ ЗА МЕСЯЦ*/
+SELECT gym.clients.id, COUNT(gym.visits.client_id) AS visits_count
+FROM gym.visits INNER JOIN gym.clients ON gym.clients.id = gym.visits.client_id
+WHERE MONTH(gym.visits.date) = MONTH(CURRENT_DATE()) AND YEAR(gym.visits.date) = YEAR(CURRENT_DATE())
+GROUP BY gym.visits.client_id
+HAVING COUNT(gym.visits.client_id) = (SELECT COUNT(gym.visits.client_id) AS visits_count
+FROM gym.visits WHERE MONTH(gym.visits.date) = MONTH(CURRENT_DATE()) AND YEAR(gym.visits.date) = YEAR(CURRENT_DATE())
+GROUP BY gym.visits.client_id
+ORDER BY visits_count DESC
+LIMIT 1);
+
+/*БОНУС*/
+SELECT gym.clients.* FROM gym.clients 
+WHERE MONTH(clients.date_of_birth) = MONTH(CURRENT_DATE) AND DAY(clients.date_of_birth) = DAY(CURRENT_DATE);
